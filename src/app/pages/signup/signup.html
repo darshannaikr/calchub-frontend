@@ -1,0 +1,200 @@
+
+<div class="signup-container">
+
+  <div class="signup-card">
+
+    <div class="signup-header">
+      <h1>CalcHub</h1>
+      <p>Create your account to get started.</p>
+    </div>
+
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="onSignup()"
+      novalidate
+    >
+
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First name</label>
+
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          placeholder="Enter your first name"
+          autocomplete="given-name"
+          [class.input-error]="isInvalid('firstName')"
+        />
+
+        @if (isInvalid('firstName')) {
+          @if (signupForm.controls.firstName.hasError('required')) {
+            <small class="error-message">
+              First name is required.
+            </small>
+          }
+
+          @if (signupForm.controls.firstName.hasError('maxlength')) {
+            <small class="error-message">
+              First name cannot exceed 50 characters.
+            </small>
+          }
+        }
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last name</label>
+
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          placeholder="Enter your last name"
+          autocomplete="family-name"
+          [class.input-error]="isInvalid('lastName')"
+        />
+
+        @if (isInvalid('lastName')) {
+          @if (signupForm.controls.lastName.hasError('required')) {
+            <small class="error-message">
+              Last name is required.
+            </small>
+          }
+
+          @if (signupForm.controls.lastName.hasError('maxlength')) {
+            <small class="error-message">
+              Last name cannot exceed 50 characters.
+            </small>
+          }
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email address</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email address"
+          autocomplete="email"
+          [class.input-error]="isInvalid('email')"
+        />
+
+        @if (isInvalid('email')) {
+          @if (signupForm.controls.email.hasError('required')) {
+            <small class="error-message">
+              Email address is required.
+            </small>
+          }
+
+          @if (signupForm.controls.email.hasError('email')) {
+            <small class="error-message">
+              Please enter a valid email address.
+            </small>
+          }
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <div class="password-wrapper">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="new-password"
+            [class.input-error]="isInvalid('password')"
+          />
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showPassword = !showPassword"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+          >
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        @if (isInvalid('password')) {
+          @if (signupForm.controls.password.hasError('required')) {
+            <small class="error-message">
+              Password is required.
+            </small>
+          }
+
+          @if (signupForm.controls.password.hasError('minlength')) {
+            <small class="error-message">
+              Password must contain at least 8 characters.
+            </small>
+          }
+        }
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm password</label>
+
+        <div class="password-wrapper">
+          <input
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="Confirm your password"
+            autocomplete="new-password"
+            [class.input-error]="
+              isInvalid('confirmPassword') ||
+              (
+                signupForm.hasError('passwordMismatch') &&
+                (signupForm.controls.confirmPassword.touched || submitted)
+              )
+            "
+          />
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showConfirmPassword = !showConfirmPassword"
+            [attr.aria-label]="showConfirmPassword ? 'Hide password' : 'Show password'"
+          >
+            {{ showConfirmPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        @if (isInvalid('confirmPassword') &&
+             signupForm.controls.confirmPassword.hasError('required')) {
+          <small class="error-message">
+            Please confirm your password.
+          </small>
+        }
+
+        @if (
+          signupForm.hasError('passwordMismatch') &&
+          (signupForm.controls.confirmPassword.touched || submitted)
+        ) {
+          <small class="error-message">
+            Password and confirm password do not match.
+          </small>
+        }
+      </div>
+
+      <button type="submit" class="signup-button">
+        Create Account
+      </button>
+
+    </form>
+
+    <p class="login-text">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </p>
+
+  </div>
+
+</div>

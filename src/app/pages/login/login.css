@@ -1,6 +1,11 @@
+
 :host {
   display: block;
   min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .login-container {
@@ -9,9 +14,8 @@
   justify-content: center;
   align-items: center;
   padding: 24px;
-  box-sizing: border-box;
-  background: #f3f6fc;
-  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .login-card {
@@ -19,21 +23,27 @@
   max-width: 400px;
   padding: 36px;
   border-radius: 16px;
-  background: white;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 8%);
+  background: #ffffff;
+  border: 1px solid #f3e4d4;
+  box-shadow: 0 12px 32px rgba(55, 65, 81, 0.09);
 }
 
+/* Application heading */
 h1 {
-  margin: 0 0 8px;
-  color: #2457d6;
+  margin: 0 0 10px;
+  color: #e88928;
   font-size: 32px;
+  font-weight: 700;
 }
 
+/* Welcome message */
 .subtitle {
-  margin-bottom: 28px;
-  color: #667085;
+  margin: 0 0 28px;
+  color: #6b7280;
+  font-size: 15px;
 }
 
+/* Form fields */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -42,53 +52,98 @@ h1 {
 }
 
 label {
+  font-size: 14px;
   font-weight: 600;
-  color: #344054;
+  color: #374151;
 }
 
 input {
-  padding: 12px;
-  border: 1px solid #d0d5dd;
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 15px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 input:focus {
-  outline: 2px solid #9bb8ff;
-  border-color: #2457d6;
+  border-color: #ed9438;
+  box-shadow: 0 0 0 3px rgba(237, 148, 56, 0.15);
 }
 
+/* Sign In button */
 button {
   width: 100%;
-  padding: 13px;
-  border: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: none;
   border-radius: 8px;
-  background: #2457d6;
-  color: white;
+  background: #e88928;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 button:hover {
-  background: #1947b8;
+  background: #d97716;
 }
 
+button:active {
+  transform: scale(0.99);
+}
+
+/* Signup navigation */
 .signup-text {
-  margin-top: 24px;
+  margin: 24px 0 0;
   text-align: center;
-  color: #667085;
+  color: #6b7280;
+  font-size: 14px;
 }
 
 .signup-text a {
-  color: #2457d6;
+  color: #d97716;
   font-weight: 600;
   text-decoration: none;
 }
 
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* Validation messages */
 .error-message {
   display: block;
   color: #dc2626;
   font-size: 12px;
   margin-top: 6px;
+}
+
+/* Invalid input styling */
+input.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
 }
