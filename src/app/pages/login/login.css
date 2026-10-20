@@ -85,3 +85,10 @@ button:hover {
   font-weight: 600;
   text-decoration: none;
 }
+
+.error-message {
+  display: block;
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 6px;
+}
