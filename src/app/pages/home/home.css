@@ -1,0 +1,141 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.home-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.navbar {
+  background: #ffffff;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-left h2 {
+  margin: 0;
+  color: #e98322;
+  font-size: 26px;
+}
+
+.nav-button,
+.add-button {
+  background: #e98322;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-button:hover,
+.add-button:hover {
+  background: #cf7018;
+}
+
+.profile-section {
+  position: relative;
+}
+
+.profile-button {
+  background: #f1f1f1;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 12%);
+  min-width: 150px;
+  z-index: 10;
+}
+
+.profile-menu button {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-menu button:hover {
+  background: #fff0df;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 24px;
+}
+
+.content h1 {
+  color: #343434;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777777;
+  margin-bottom: 35px;
+}
+
+.welcome-card,
+.calculation-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 5%);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.card-header h2 {
+  color: #343434;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888888;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 16px;
+  }
+
+  .nav-left {
+    gap: 12px;
+  }
+
+  .content {
+    margin: 24px auto;
+  }
+}

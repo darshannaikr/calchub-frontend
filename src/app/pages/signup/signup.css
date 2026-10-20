@@ -164,3 +164,17 @@
     font-size: 30px;
   }
 }
+
+.api-error {
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: #fff1e8;
+  color: #a33a12;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

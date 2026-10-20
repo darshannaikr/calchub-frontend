@@ -1,46 +1,62 @@
+
 <div class="login-container">
   <div class="login-card">
+
     <h1>CalcHub</h1>
     <p class="subtitle">Welcome back! Sign in to continue.</p>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
       <div class="form-group">
         <label for="email">Email address</label>
-        <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        />
 
         @if (loginForm.controls.email.touched &&
-        loginForm.controls.email.hasError('required')) {
-        <small class="error-message">Email is required.</small>
-        }
-
-        @if (loginForm.controls.email.touched &&
-        loginForm.controls.email.hasError('email')) {
-        <small class="error-message">Please enter a valid email address.</small>
+             loginForm.controls.email.invalid) {
+          <small class="error-message">
+            Please enter a valid email address.
+          </small>
         }
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" type="password" formControlName="password" placeholder="Enter your password" />
-        @if (loginForm.controls.password.touched &&
-        loginForm.controls.password.hasError('required')) {
-        <small class="error-message">Password is required.</small>
-        }
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
 
         @if (loginForm.controls.password.touched &&
-        loginForm.controls.password.hasError('minlength')) {
-        <small class="error-message">
-          Password must contain at least 8 characters.
-        </small>
+             loginForm.controls.password.invalid) {
+          <small class="error-message">
+            Password is required.
+          </small>
         }
       </div>
 
-      <button type="submit">Sign In</button>
+      @if (errorMessage()) {
+        <div class="api-error" role="alert">
+          {{ errorMessage() }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="isLoading()">
+        {{ isLoading() ? 'Signing in...' : 'Sign In' }}
+      </button>
+
     </form>
 
     <p class="signup-text">
       Don't have an account?
       <a routerLink="/signup">Sign up</a>
     </p>
+
   </div>
 </div>
