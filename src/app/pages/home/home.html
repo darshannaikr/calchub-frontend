@@ -1,0 +1,68 @@
+
+<div class="home-container">
+
+  <header class="navbar">
+    <div class="nav-left">
+      <h2>CalcHub</h2>
+
+      <button class="nav-button"
+              (click)="openCalculations()">
+        Calculation
+      </button>
+    </div>
+
+    <div class="profile-section">
+      <button class="profile-button"
+              (click)="toggleProfile()">
+        My Profile ▾
+      </button>
+
+      @if (showProfileMenu()) {
+        <div class="profile-menu">
+          <button (click)="logout()">Logout</button>
+        </div>
+      }
+    </div>
+  </header>
+
+  <main class="content">
+
+    <h1>Welcome to CalcHub!</h1>
+    <p class="subtitle">
+      Manage your calculations in one place.
+    </p>
+
+    @if (showCalculations()) {
+
+      <section class="calculation-card">
+
+        <div class="card-header">
+          <h2>My Calculations</h2>
+
+          <button class="add-button"
+                  (click)="addCalculation()">
+            + Add New Calculation
+          </button>
+        </div>
+
+        <div class="empty-state">
+          <p>No calculations performed yet.</p>
+        </div>
+
+      </section>
+
+    } @else {
+
+      <section class="welcome-card">
+        <h2>Get started</h2>
+        <p>
+          Click the Calculation button to view
+          your calculation history.
+        </p>
+      </section>
+
+    }
+
+  </main>
+
+</div>
